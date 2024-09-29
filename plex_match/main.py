@@ -1,6 +1,9 @@
 from flask import Flask, render_template
 import requests
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 app = Flask(__name__)
 
 
@@ -14,6 +17,12 @@ def index():
 
     # Pass the data to the frontend
     return render_template(template_name_or_list='index.html', context=context)
+
+
+@app.route('/match')
+def match():
+    token = os.getenv("TOKEN")
+    url = os.getenv("URL")
 
 
 if __name__ == '__main__':
