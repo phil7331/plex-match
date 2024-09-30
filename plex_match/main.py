@@ -2,6 +2,9 @@ from flask import Flask, render_template
 import requests
 from dotenv import load_dotenv
 import os
+from plexapi.server import PlexServer
+import pymongo
+
 
 load_dotenv()
 app = Flask(__name__)
@@ -23,6 +26,9 @@ def index():
 def match():
     token = os.getenv("TOKEN")
     url = os.getenv("URL")
+    plex = PlexServer(url, token)
+    movies = plex.library.section("Movies").search(unwatched=True)
+    print()
 
 
 if __name__ == '__main__':
