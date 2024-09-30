@@ -11,7 +11,10 @@
         <h1>API Data</h1>
         <ul class="list-group">
             {% for item in context %}
-                <li class="list-group-item">{{ item }}</li>
+                <li class="list-group-item">
+                    <h5>{{ item.title }}</h5>
+                    <img src="{{ item.poster_url }}" alt="{{ item.title }} Poster" class="img-fluid" style="max-width: 200px;">
+                </li>
             {% endfor %}
         </ul>
     </div>
